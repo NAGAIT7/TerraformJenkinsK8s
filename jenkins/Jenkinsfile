@@ -35,9 +35,9 @@ pipeline {
             steps{
                 script{
                     dir('terraform'){
-                         sh 'terraform plan -auto-approve'
+                         sh 'terraform plan'
                     }
-                    
+                    input(message: "Approve?", ok: "proceed")
                 }
             }
         }
@@ -45,7 +45,7 @@ pipeline {
             steps{
                 script{
                     dir('terraform'){
-                         sh 'terraform apply -auto-approve'
+                         sh 'terraform $action --auto-approve'
                     }
                 }
             }
