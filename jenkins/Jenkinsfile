@@ -35,7 +35,7 @@ pipeline {
             steps{
                 script{
                     dir('terraform'){
-                         sh 'terraform plan -out a.out --auto-approve'
+                         sh 'terraform plan --auto-approve'
                     }
                     
                 }
@@ -45,7 +45,7 @@ pipeline {
             steps{
                 script{
                     dir('terraform'){
-                         sh 'terraform apply a.out'
+                         sh 'terraform apply --auto-approve'
                     }
                 }
             }
