@@ -9,7 +9,7 @@ pipeline {
         stage('Checkout SCM'){
             steps{
                 script{
-                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/yeshwanthlm/EKS-Terraform-Jenkins.git']])
+                    checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/ThulasiKumar379/EKS-Terraform-Jenkins-New.git']])
                 }
             }
         }
@@ -37,7 +37,7 @@ pipeline {
                     dir('terraform'){
                          sh 'terraform plan'
                     }
-                    input(message: "Approve?", ok: "proceed")
+                    
                 }
             }
         }
@@ -45,7 +45,7 @@ pipeline {
             steps{
                 script{
                     dir('terraform'){
-                         sh 'terraform $action --auto-approve'
+                         sh 'terraform apply --auto-approve'
                     }
                 }
             }
